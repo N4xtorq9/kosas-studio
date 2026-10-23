@@ -10,20 +10,26 @@
 // console.log(document.querySelectorAll(".form-input"));
 // console.log(document.querySelector(".form-input"));
 // console.log(document.querySelector("input[type='email']"));
+import { redirectAlert } from "./alerts.js";
+import { buscarUsuario } from "./data.js";
+
 function iniciarSesion(){
 let correo =document.querySelector("#correo").value;
 let clave = document.querySelector("#clave").value;
-if(correo == "n4xtor@gmail.com" && clave == "123456"){
-    alert("Bienvenido al sistema...")
-    window.location.href = "/pages/catalogo.html"
+let usuario = buscarUsuario(correo, clave);
+let registro = registrarUsuario();
+
+if(usuario){
+    redirectAlert("Bienvenido al sistema " + usuario.nombre, "success", "/pages/catalogo.html");
 }   else{
-        alert("Error de credenciales")
+        redirectAlert("Error de credenciales", "error", "/index.html");
     }
 }
 
 
-let btn_login = document.querySelector("#btn-login"); 
-let eventos = ["click", "dblclick", "mouseenter"]
+let btn_login = document.querySelector("#btn-login");
 
-btn_login.addEventListener(eventos[0], iniciarSesion)
-//btn_login.addEventListener("click", iniciarSesion)
+//btn_login.addEventListener(eventos[0], iniciarSesion)
+btn_login.addEventListener("click", iniciarSesion)
+
+
