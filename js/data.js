@@ -1,3 +1,5 @@
+import { setLocalStorage } from "./local-storage.js";
+
 let usuarios = [
     {
         id: "id1",
@@ -16,21 +18,18 @@ let usuarios = [
     
 ];
 
+let cosas = []
+
 // El método find busca para redireccionar el resultado
 export function buscarUsuario(correo, clave) {
     let auth = usuarios.find((usuario)=> correo == usuario.correo && clave == usuario.contrasena)
     return auth
 }
 
-export function registrarUsuario() {
-   // let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+export function registrarUsuario(){
+    
+}
 
-  // Agregar el nuevo usuario al array
-  //usuarios.push(nuevoUsuario);
-
-  // Guardar el array actualizado en localStorage
-  //localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
-  //alert('¡Usuario registrado con éxito!');
-  //registroForm.reset();
+export function registrarCosa(key, value){
+    setLocalStorage(key, value);
 }
