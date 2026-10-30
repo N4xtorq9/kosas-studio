@@ -12,14 +12,18 @@
 // console.log(document.querySelector("input[type='email']"));
 import { redirectAlert } from "./alerts.js";
 import { buscarUsuario } from "./data.js";
+import { setLocalStorage } from "./local-storage.js";
 
 function iniciarSesion(){
 let correo =document.querySelector("#correo").value;
 let clave = document.querySelector("#clave").value;
 let usuario = buscarUsuario(correo, clave);
-let registro = registrarUsuario();
 
 if(usuario){
+    setLocalStorage("usuario", usuario)
+    //setLocalStorage("usuario", usuario.nombre)
+    //setLocalStorage("id", usuario.id)
+    //setLocalStorage("correo", usuario.correo)
     redirectAlert("Bienvenido al sistema " + usuario.nombre, "success", "/pages/catalogo.html");
 }   else{
         redirectAlert("Error de credenciales", "error", "/index.html");
