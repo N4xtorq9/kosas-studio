@@ -1,4 +1,4 @@
-import { setLocalStorage } from "./local-storage.js";
+import { getLocalStorage, setLocalStorage } from "./local-storage.js";
 
 let usuarios = [
     {
@@ -18,7 +18,7 @@ let usuarios = [
     
 ];
 
-let cosas = []
+export let cosas = getLocalStorage("cosas") || []
 
 // El método find busca para redireccionar el resultado
 export function buscarUsuario(correo, clave) {
