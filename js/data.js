@@ -15,7 +15,6 @@ let usuarios = [
         telefono: "3102007573",
         contrasena: "12345"
     },
-    
 ];
 
 export let cosas = getLocalStorage("cosas") || []
